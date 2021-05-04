@@ -29,5 +29,35 @@ namespace OrdenamientoYBusqueda
             }
         }
 
+        public void BusquedaBinaria(int[] arreglo, int elementoBuscado)
+        {
+            int medio = (arreglo.Length / 2);
+            if (elementoBuscado < arreglo[medio])
+            {
+                for (int i = 0; i < medio; i++)
+                {
+                    if (elementoBuscado == arreglo[i])
+                    {
+                        Console.WriteLine($"El elemento {elementoBuscado} se encuentra en la posicion {i}");
+                    }
+                }
+            }
+            else if(elementoBuscado > arreglo[medio]){
+                for (int i = medio; i < arreglo.Length; i++)
+                {
+                    int el = arreglo[i];
+                    if (elementoBuscado == arreglo[i])
+                    {
+                        Console.WriteLine($"El elemento {elementoBuscado} se encuentra en la posicion {i}");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"El elemento {elementoBuscado} se encuentra en la posicion {medio}");
+            }
+
+        }
+
     }
 }

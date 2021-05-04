@@ -74,11 +74,62 @@ namespace OrdenamientoYBusqueda
 
         //quick-short
 
-        public int[] QuickShort(int[] arreglo)
+        public int[] Quick_Sort(int[] arreglo, int izquierda, int derecha)
         {
-            
+            if (izquierda < derecha)
+            {
+                int pivot = Partition(arreglo, izquierda, derecha);
+
+                if (pivot > 1)
+                {
+                    Quick_Sort(arreglo, izquierda, pivot - 1);
+                }
+                if (pivot + 1 < derecha)
+                {
+                    Quick_Sort(arreglo, pivot + 1, derecha);
+                }
+            }
             return arreglo;
         }
+
+
+        public static int Partition(int[] arreglo, int izquierda, int derecha)
+        {
+            int pivot = arreglo[izquierda];
+            while (true)
+            {
+
+                while (arreglo[izquierda] < pivot)
+                {
+                    izquierda++;
+                }
+
+                while (arreglo[derecha] > pivot)
+                {
+                    derecha--;
+                }
+
+                if (izquierda < derecha)
+                {
+                    if (arreglo[izquierda] == arreglo[derecha]) return derecha;
+
+                    int temp = arreglo[izquierda];
+                    arreglo[izquierda] = arreglo[derecha];
+                    arreglo[derecha] = temp;
+
+
+                }
+                else
+                {
+                    return derecha;
+                }
+            }
+        }
+
+
+
+
+
 
     }
 }
