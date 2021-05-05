@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace OrdenamientoYBusqueda
 {
     class Ordenar
     {
 
+        private Stopwatch timeMeasure = new Stopwatch();
+
+
+        public Stopwatch GeTimeMeasure()
+        {
+            return timeMeasure;
+        }
+
         //insercion
 
         public int[] Insercion(int[] arreglo)
         {
+            timeMeasure.Start();
             int auxiliar = 0;
             for (int i = 1; i < arreglo.Length; i++)
             {
@@ -24,6 +34,7 @@ namespace OrdenamientoYBusqueda
                     }
                 }
             }
+            timeMeasure.Stop();
             return arreglo;
         }
 
@@ -32,6 +43,7 @@ namespace OrdenamientoYBusqueda
 
         public int[] Burbuja(int[] arreglo)
         {
+            timeMeasure.Start();
             bool bandera = true;
             int auxiliar = 0;
             while (bandera)
@@ -48,6 +60,7 @@ namespace OrdenamientoYBusqueda
                     }
                 }
             }
+            timeMeasure.Stop();
             return arreglo;
         }
 
@@ -55,6 +68,7 @@ namespace OrdenamientoYBusqueda
 
         public int[] Seleccion(int[] arreglo)
         {
+            timeMeasure.Start();
             int auxiliar = 0;
             for (int i = 0; i < arreglo.Length; i++)
             {
@@ -69,6 +83,7 @@ namespace OrdenamientoYBusqueda
                     }
                 }
             }
+            timeMeasure.Stop();
             return arreglo;
         }
 
@@ -76,6 +91,7 @@ namespace OrdenamientoYBusqueda
 
         public int[] Quick_Sort(int[] arreglo, int izquierda, int derecha)
         {
+            timeMeasure.Start();
             if (izquierda < derecha)
             {
                 int pivot = Partition(arreglo, izquierda, derecha);
@@ -89,6 +105,7 @@ namespace OrdenamientoYBusqueda
                     Quick_Sort(arreglo, pivot + 1, derecha);
                 }
             }
+            timeMeasure.Stop();
             return arreglo;
         }
 

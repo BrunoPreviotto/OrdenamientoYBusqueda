@@ -85,36 +85,54 @@ namespace OrdenamientoYBusqueda
                             switch (opcionOrdenar)
                             {
                                 case 1:
-                                   Console.WriteLine("Arreglo ordenado por insercion: ");
+                                    Console.WriteLine("Arreglo ordenado por insercion: ");
                                     ImprimirArreglo(ordenar.Insercion(arreglo));
+                                    Console.WriteLine("Tiempo consumido: " + ordenar.GeTimeMeasure().Elapsed.TotalMilliseconds);
                                     break;
                                 case 2:
-                                    Console.WriteLine($"Arreglo ordenado por burbuja: {ordenar.Burbuja(arreglo)}");
+                                    Console.WriteLine("Arreglo ordenado por burbuja: ");
+                                    ImprimirArreglo(ordenar.Burbuja(arreglo));
+                                    Console.WriteLine("Tiempo consumido: " + ordenar.GeTimeMeasure().Elapsed.TotalMilliseconds);
                                     break;
                                 case 3:
-                                    Console.WriteLine($"Arreglo ordenado por seleccion: {ordenar.Seleccion(arreglo)}");
+                                    Console.WriteLine("Arreglo ordenado por seleccion: ");
+                                    ImprimirArreglo(ordenar.Seleccion(arreglo));
+                                    Console.WriteLine("Tiempo consumido: " + ordenar.GeTimeMeasure().Elapsed.TotalMilliseconds);
                                     break;
                                 case 4:
-                                    Console.WriteLine($"Arreglo ordenado por quick-sort: {ordenar.Quick_Sort(arreglo,0,arreglo.Length-1)}");
+                                    Console.WriteLine("Arreglo ordenado por quick-sort: ");
+                                    ImprimirArreglo(ordenar.Quick_Sort(arreglo, 0, arreglo.Length-1));
+                                    Console.WriteLine("Tiempo consumido: " + ordenar.GeTimeMeasure().Elapsed.TotalMilliseconds);
                                     break;
                             }
+                            Console.WriteLine("");
+                            Console.WriteLine("Ingresar 5 para salir: ");
                             opcionOrdenar = int.Parse(Console.ReadLine());
                         }
                         Console.Clear();
                         Menu();
                         break;
                     case 3:
-                        Console.Clear();
-                        Buscar buscar = new Buscar();
-                        Console.WriteLine("Ingresar el numero a buscar: ");
-                        int elementoBuscado = int.Parse(Console.ReadLine());
-                        if (DeterminarSiArregloOrdenado(arreglo))
+                        while (opcion != 5)
                         {
-                            buscar.BusquedaBinaria(arreglo, elementoBuscado);
+                            Console.Clear();
+                            Buscar buscar = new Buscar();
+                            Console.WriteLine("Ingresar el numero a buscar: ");
+                            int elementoBuscado = int.Parse(Console.ReadLine());
+                            if (DeterminarSiArregloOrdenado(arreglo))
+                            {
+                                buscar.BusquedaBinaria(arreglo, elementoBuscado);
+                            }
+                            else
+                            {
+                                buscar.Secuencial(arreglo, elementoBuscado);
+                            }
+                            Console.WriteLine("");
+                            Console.WriteLine("Ingresar 5 para salir: ");
+                            opcion = int.Parse(Console.ReadLine());
                         }
-                        else {
-                            buscar.Secuencial(arreglo, elementoBuscado);
-                        }
+                        Console.Clear();
+                        Menu();
                         break;
                 }
                 opcion = int.Parse(Console.ReadLine());
